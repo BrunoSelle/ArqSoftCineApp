@@ -26,6 +26,7 @@
                     <h5>Cadastro de Diretores</h5>
                 </div>
                 <div class="card-body">
+                    <% if (listaDiretores != null && listaDiretores.size() > 0) { %>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover table-sm">
                             <thead>
@@ -58,6 +59,9 @@
                             </tbody>
                         </table> 
                     </div>
+                <% } else { %>
+                    <p>Não existem registros de diretores para serem exibidos</p>
+                    <% }%>
                 </div>
             </div>
             <div class="mt-3"><a href="Diretores?action=manutencaoDiretoresInsert"><button type="button" class="btn btn-primary"><i class="bi-plus-circle"></i> Novo Diretor</button></a></div>

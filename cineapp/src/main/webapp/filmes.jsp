@@ -65,7 +65,7 @@
                         </table> 
                     </div>
                     <% } else { %>
-                    <p>Não existem registros de pessoas para serem exibidos</p>
+                    <p>Não existem registros de filmes para serem exibidos</p>
                     <% }%>
                 </div>
             </div>

@@ -3,7 +3,7 @@
  // Function que escreve a mensagem de confirmação da div, ajusta o conteúdo da variável 
  // campoProduto e mostra a div modal
  function mostraConfDelete(codDiretor) {
-    campoProduto = codProduto;
+    campoDiretor = codDiretor;
     jQuery("#confirmMsg").html("Tem <strong>CERTEZA</strong> que deseja excluir o diretor de código " + codDiretor + "? <br/><br/>Essa operação não poderá ser desfeita.");
     jQuery("#conf-modal").modal('show');
  }

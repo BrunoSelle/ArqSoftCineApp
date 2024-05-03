@@ -123,9 +123,9 @@ public class DiretorDB {
         try {
             
             sql =   "INSERT INTO CINEAPP_DIRETOR                " +
-                    "   (COD_PRODUTO,                           " +
+                    "   (COD_DIRETOR,                           " +
                     "   NOME)                                   " +
-                    "VALUES ((SELECT NVL(MAX(COD_PRODUTO),0)+1  " +
+                    "VALUES ((SELECT NVL(MAX(COD_DIRETOR),0)+1  " +
                     " FROM CINEAPP_DIRETOR),                    " +
                     "                      ?)                   " ;
 
@@ -162,7 +162,7 @@ public class DiretorDB {
             
             sql =   "UPDATE CINEAPP_DIRETOR " +
                     " SET NOME = ?          " +
-                    " WHERE COD_PRODUTO = ? " ;
+                    " WHERE COD_DIRETOR = ? " ;
 
            stmt = con.prepareStatement(sql);
            stmt.setString(1, dir.getNome());

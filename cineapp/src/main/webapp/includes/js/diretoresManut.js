@@ -9,7 +9,7 @@ jQuery(document).ready(function () {
 });
 
 // Define que a function enviaForm deve ser chamada ao enviar o form
-jQuery("#formDiretorManut").submit(enviaForm);
+// jQuery("#formDiretorManut").submit(enviaForm);
 
 function enviaForm(event) {
     // Desabilita o botão salvar enquanto envia os dados, para evitar que o
