@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <servlet>
+        <servlet-name>FilmesServlet</servlet-name>
+        <servlet-class>com.cineapp.controller.FilmesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DiretoresServlet</servlet-name>
+        <servlet-class>com.cineapp.controller.DiretoresServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FilmesServlet</servlet-name>
+        <url-pattern>/Filmes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DiretoresServlet</servlet-name>
+        <url-pattern>/Diretores</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

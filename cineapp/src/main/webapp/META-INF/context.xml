@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/cineapp">
+  <Resource auth="Container" 
+            connectionFactoryClassName="oracle.jdbc.pool.OracleDataSource" 
+            connectionPoolName="UcpStdPool" 
+            factory="com.datasys.oraclefactory.DatasysOracleUcpFactory" 
+            inactiveConnectionTimeout="20" 
+            initialPoolSize="2" 
+            maxPoolSize="20" 
+            minPoolSize="2" 
+            name="jdbc/SRH_DB" 
+            password="HXoSZ3WB4cEsZrBQQWJdPYeFW80MYpL6w9NhlOm5hgvz61j1IiIOmBX" 
+            type="oracle.ucp.jdbc.PoolDataSource" 
+            url="jdbc:oracle:thin:@localhost:1521/XE" 
+            user="ESTAGIO"/>
+</Context>
