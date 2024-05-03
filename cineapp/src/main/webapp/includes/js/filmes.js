@@ -3,7 +3,7 @@
  // Function que escreve a mensagem de confirmação da div, ajusta o conteúdo da variável 
  // campoPessoa e mostra a div modal
  function mostraConfDelete(codFilme) {
-    campoPessoa = codFilme;
+    campoFilme = codFilme;
     jQuery("#confirmMsg").html("Tem <strong>CERTEZA</strong> que deseja excluir o filme de código " + codFilme + "? <br/><br/>Essa operação não poderá ser desfeita.");
     jQuery("#conf-modal").modal('show');
  }

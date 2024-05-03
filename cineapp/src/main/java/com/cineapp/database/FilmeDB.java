@@ -32,7 +32,7 @@ public class FilmeDB {
         
         String sql;
 
-        sql = "SELECT COD_FILME, NOME, DESCRICAO, GENERO,   " +
+        sql = "SELECT COD_FILME, NOME, DESCRICAO, GENERO    " +
               "FROM CINEAPP_FILMES WHERE COD_FILME =        " + codFilme;
 
         Statement stmt = null;
@@ -80,7 +80,7 @@ public class FilmeDB {
         
         String sql;
 
-        sql = "SELECT COD_FILME, NOME, DESCRICAO, GENERO,   " +
+        sql = "SELECT COD_FILME, NOME, DESCRICAO, GENERO    " +
               "FROM CINEAPP_FILMES ORDER BY COD_FILME       " ;
 
         Statement stmt = null;
@@ -133,7 +133,7 @@ public class FilmeDB {
                     "   DESCRICAO,                          " +
                     "   GENERO)                             " +
                     "VALUES ((SELECT NVL(MAX(COD_FILME),0)+1" +
-                    "FROM CINEAPP_FILMES),                  " +
+                    " FROM CINEAPP_FILMES),                 " +
                     "                      ?,               " +
                     "                      ?,               " +
                     "                      ?)               " ;

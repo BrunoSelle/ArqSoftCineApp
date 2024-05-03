@@ -23,7 +23,7 @@
         <div class="container">
             <div class="card mt-4">
                 <div class="card-header">
-                    <h5>Cadastro de Pessoas</h5>
+                    <h5>Cadastro de Filmes</h5>
                 </div>
                 <div class="card-body">
                     <% if (listaFilmes != null && listaFilmes.size() > 0) { %>
@@ -73,6 +73,6 @@
         </div>
         <jsp:include page="fragmentos/toolTip.jsp" />
         <jsp:include page="fragmentos/confModal.jsp" />
-        <script type="text/javascript" src="includes/js/pessoas.js"></script>
+        <script type="text/javascript" src="includes/js/filmes.js"></script>
     </body>
 </html>

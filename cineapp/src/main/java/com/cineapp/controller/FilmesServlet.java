@@ -29,23 +29,23 @@ public class FilmesServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String action = request.getParameter("action");
+        String action = request.getParameter("action").toLowerCase();
 
         if (action != null) {
             switch (action) {
-                case "consultaFilmes":
+                case "consultafilmes":
                     consultaFilmes(request, response);
                     break;
-                case "manutencaoFilmeInsert":
+                case "manutencaofilmeinsert":
                     manutencaoFilmeInsert(request, response);
                     break;
-                case "manutencaoFilmeUpdate":
+                case "manutencaofilmeupdate":
                     manutencaoFilmeUpdate(request, response);
                     break;
-                case "gravaFilmeDB":
+                case "gravafilmedb":
                     gravaFilmeDB(request, response);
                     break;
-                case "excluiPessoaDB":
+                case "excluifilmedb":
                     excluiFilmeDB(request, response);
                     break;
                 default:
@@ -140,7 +140,7 @@ public class FilmesServlet extends HttpServlet {
         }
 
         // Recebe e valida nome
-        String nome = request.getParameter("nome");
+        String nome = request.getParameter("nome").toUpperCase();
         if (msgErro.equalsIgnoreCase("")) {
             if (nome == null || nome.equalsIgnoreCase("")) {
                 msgErro = "Informar o nome";
@@ -156,7 +156,7 @@ public class FilmesServlet extends HttpServlet {
         }
 
         // Recebe e valida genero
-        String genero = request.getParameter("genero");
+        String genero = request.getParameter("genero").toUpperCase();
         
         if (msgErro.equalsIgnoreCase("")) {
             // Cria um objeto pessoa para passar para gravar no banco

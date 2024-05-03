@@ -29,23 +29,23 @@ public class DiretoresServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String action = request.getParameter("action");
+        String action = request.getParameter("action").toLowerCase();
 
         if (action != null) {
             switch (action) {
-                case "consultaDiretores":
+                case "consultadiretores":
                     consultaDiretores(request, response);
                     break;
-                case "manutencaoDiretoresInsert":
+                case "manutencaodiretoresinsert":
                     manutencaoDiretoresInsert(request, response);
                     break;
-                case "manutencaoDiretorUpdate":
+                case "manutencaodiretorupdate":
                     manutencaoDiretorUpdate(request, response);
                     break;
-                case "gravaDiretorDB":
+                case "gravadiretordb":
                     gravaDiretorDB(request, response);
                     break;
-                case "excluiDiretorDB":
+                case "excluidiretordb":
                     excluiDiretorDB(request, response);
                     break;
                 default:
