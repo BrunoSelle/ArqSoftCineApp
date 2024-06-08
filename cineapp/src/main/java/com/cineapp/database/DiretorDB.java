@@ -191,7 +191,7 @@ public class DiretorDB {
      */
     public static void deleteDiretorDB(int codDiretor) throws SQLException {
         Connection con  = DataBase.getConexao();
-
+        
         String sql      = "";
         PreparedStatement stmt = null;
         try {

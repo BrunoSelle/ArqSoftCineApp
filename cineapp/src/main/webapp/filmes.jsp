@@ -35,6 +35,7 @@
                                     <th>Nome</th>
                                     <th>Descrição</th>
                                     <th>Gênero</th>
+                                    <th>Diretor</th>
                                     <th>Operações</th>
                                 </tr>
                             </thead>
@@ -45,6 +46,7 @@
                                     <td><%= movie.getCodFilme()%></td>
                                     <td><%= movie.getNomeFilme()%></td>
                                     <td><%= movie.getDescricao()%></td>
+                                    <td><%= movie.getNomeDiretor()%></td>
                                     <td><%= movie.getGenero()%></td>
                                     <td>
                                         <a href='Filmes?action=manutencaoFilmeUpdate&codFilme=<%= movie.getCodFilme()%>' style="text-decoration: none;" data-bs-toggle="tooltip" title='Alterar Registro' >

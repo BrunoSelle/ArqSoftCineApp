@@ -4,6 +4,7 @@
     Author     : Selle
 --%>
 
+<%@page import="com.cineapp.model.Diretor"%>
 <%@page import="com.cineapp.model.Filme"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -11,6 +12,7 @@
 
 <%
     Filme movie = (Filme) request.getAttribute("movie");
+    List<Diretor> listaDir = (ArrayList<Diretor>) request.getAttribute("listaDir");
 %>
 
 <!DOCTYPE html>
@@ -25,7 +27,12 @@
                 <input type="hidden" id="codFilme" name="codFilme" value="<%= movie.getCodFilme()%>" />
                 <div class="card mt-4">
                     <div class="card-header">
-                        <h5>Manutenção de Pessoa</h5>
+                        <h5><%if (movie.getCodFilme() == 0){
+                        out.print("Cadastro de Filmes");
+                            } else {
+                            out.print("Manutenção de Filmes");
+                            }
+                        %></h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -55,6 +62,31 @@
                                         <label for="genero">Gênero</label>
                                         <input type="text" class="form-control shadow-none" id="genero" name="genero" placeholder="Digite a descrição do filme"
                                                value="<%= (movie.getCodFilme() > 0 ? movie.getGenero() : "") %>" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="row">
+                                <div class="col-10 col-md-5 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="diretor">Diretor</label>
+                                        <select class="form-control shadow-none" id="diretor" name="diretor">
+                                            <option value="0"> Selecione um diretor </option>
+                                            <%
+                                                if (listaDir != null && listaDir.size() > 0) {
+                                                    for (Diretor dir : listaDir) {
+                                                        if (dir.getCodDiretor() == movie.getCodDiretor()) {
+                                                            out.println("<option selected='' value='" + dir.getCodDiretor() + "'>");
+                                                        } else {
+                                                            out.println("<option value='" + dir.getCodDiretor() + "'>");
+                                                        }
+                                                        out.println(dir.getCodDiretor() + " - " + dir.getNome());
+                                                        out.println("</option>");
+                                                    }
+                                                }
+                                            %>
+                                        </select>       
                                     </div>
                                 </div>
                             </div>

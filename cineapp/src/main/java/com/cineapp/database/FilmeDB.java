@@ -1,5 +1,6 @@
 package com.cineapp.database;
 
+import com.cineapp.model.Diretor;
 import com.cineapp.model.Filme;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -32,8 +33,10 @@ public class FilmeDB {
         
         String sql;
 
-        sql = "SELECT COD_FILME, NOME, DESCRICAO, GENERO    " +
-              "FROM CINEAPP_FILMES WHERE COD_FILME =        " + codFilme;
+        sql =   " SELECT FIL.*, DIR.NOME AS NOME_DIRETOR                        " +
+                " FROM CINEAPP_FILMES FIL                                       " +
+                " JOIN CINEAPP_DIRETOR DIR ON FIL.COD_DIRETOR = DIR.COD_DIRETOR " +
+                " WHERE FIL.COD_FILME =                                         " + codFilme;
 
         Statement stmt = null;
         ResultSet rs   = null;
@@ -44,7 +47,9 @@ public class FilmeDB {
             Filme movie = new Filme();
             if (rs.next()) {
                 movie.setCodFilme(rs.getInt("COD_FILME"));
+                movie.setCodDiretor(rs.getInt("COD_DIRETOR"));
                 movie.setNomeFilme(rs.getString("NOME"));
+                movie.setNomeDiretor(rs.getString("NOME_DIRETOR"));
                 movie.setDescricao(rs.getString("DESCRICAO"));
                 movie.setGenero(rs.getString("GENERO"));
             }
@@ -80,8 +85,11 @@ public class FilmeDB {
         
         String sql;
 
-        sql = "SELECT COD_FILME, NOME, DESCRICAO, GENERO    " +
-              "FROM CINEAPP_FILMES ORDER BY COD_FILME       " ;
+        sql =   " SELECT FIL.*, DIR.NOME AS NOME_DIRETOR                        " +
+                " FROM CINEAPP_FILMES FIL                                       " +
+                " JOIN CINEAPP_DIRETOR DIR ON FIL.COD_DIRETOR = DIR.COD_DIRETOR " +
+                " ORDER BY COD_FILME                                            ";
+
 
         Statement stmt = null;
         ResultSet rs   = null;
@@ -93,7 +101,9 @@ public class FilmeDB {
             while (rs.next()) {
                 Filme movie = new Filme();
                 movie.setCodFilme(rs.getInt("COD_FILME"));
+                movie.setCodDiretor(rs.getInt("COD_DIRETOR"));
                 movie.setNomeFilme(rs.getString("NOME"));
+                movie.setNomeDiretor(rs.getString("NOME_DIRETOR"));
                 movie.setDescricao(rs.getString("DESCRICAO"));
                 movie.setGenero(rs.getString("GENERO"));
                 listaFilmes.add(movie);
@@ -131,9 +141,11 @@ public class FilmeDB {
                     "   (COD_FILME ,                        " +
                     "   NOME,                               " +
                     "   DESCRICAO,                          " +
-                    "   GENERO)                             " +
+                    "   GENERO,                             " +
+                    "   COD_DIRETOR)                        " +
                     "VALUES ((SELECT NVL(MAX(COD_FILME),0)+1" +
                     " FROM CINEAPP_FILMES),                 " +
+                    "                      ?,               " +
                     "                      ?,               " +
                     "                      ?,               " +
                     "                      ?)               " ;
@@ -142,6 +154,7 @@ public class FilmeDB {
            stmt.setString(1, movie.getNomeFilme());
            stmt.setString(2, movie.getDescricao());
            stmt.setString(3, movie.getGenero());
+           stmt.setInt(4, movie.getCodDiretor());
            stmt.execute();
             
         } catch (SQLException e) {
@@ -174,14 +187,16 @@ public class FilmeDB {
             sql =   "UPDATE CINEAPP_FILMES  " +
                     " SET NOME = ?,         " +
                     "     DESCRICAO = ?,    " +
-                    "     GENERO = ?        " +
+                    "     GENERO = ?,       " +
+                    "     COD_DIRETOR = ?   " +
                     " WHERE COD_FILME = ?   " ;
 
            stmt = con.prepareStatement(sql);
            stmt.setString(1, movie.getNomeFilme());
            stmt.setString(2, movie.getDescricao());
            stmt.setString(3, movie.getGenero());
-           stmt.setInt(4, movie.getCodFilme());
+           stmt.setInt(4, movie.getCodDiretor());
+           stmt.setInt(5, movie.getCodFilme());
            stmt.execute();
             
         } catch (SQLException e) {
@@ -233,4 +248,5 @@ public class FilmeDB {
             }
         }
     }
+    
 }

@@ -7,8 +7,8 @@ import java.util.Date;
  * @author Selle
  */
 public class Filme {
-    private int codFilme;
-    private String nomeFilme, descricao, genero;
+    private int codFilme, codDiretor;
+    private String nomeFilme, descricao, genero, nomeDiretor;
 
     /**
      * @return the codFilme
@@ -65,6 +65,36 @@ public class Filme {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+
+    /**
+     * @return the codDiretor
+     */
+    public int getCodDiretor() {
+        return codDiretor;
+    }
+
+    /**
+     * @param codDiretor the codDiretor to set
+     */
+    public void setCodDiretor(int codDiretor) {
+        this.codDiretor = codDiretor;
+    }
+
+    /**
+     * @return the nomeDiretor
+     */
+    public String getNomeDiretor() {
+        return nomeDiretor;
+    }
+
+    /**
+     * @param nomeDiretor the nomeDiretor to set
+     */
+    public void setNomeDiretor(String nomeDiretor) {
+        this.nomeDiretor = nomeDiretor;
+    }
+
+
 
    
 }

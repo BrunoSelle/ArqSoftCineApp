@@ -1,6 +1,8 @@
 package com.cineapp.controller;
 
+import com.cineapp.database.DiretorDB;
 import com.cineapp.database.FilmeDB;
+import com.cineapp.model.Diretor;
 import com.cineapp.model.Filme;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -76,7 +78,9 @@ public class FilmesServlet extends HttpServlet {
             throws ServletException, IOException {
 
         Filme movie = new Filme();
-
+        List<Diretor> listaDir = carregaListaDiretores();
+        
+        request.setAttribute("listaDir", listaDir);
         request.setAttribute("movie", movie);
         // Direcionar para o jsp
         request.getServletContext().getRequestDispatcher("/filmesManut.jsp").forward(request, response);
@@ -86,6 +90,10 @@ public class FilmesServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String msgErro = "";
+        
+        //carrega lista diretor
+        List<Diretor> listaDir = carregaListaDiretores();
+        request.setAttribute("listaDir", listaDir);
 
         // Recebe e valida codFilme
         String codFilme = request.getParameter("codFilme");
@@ -158,6 +166,13 @@ public class FilmesServlet extends HttpServlet {
         // Recebe e valida genero
         String genero = request.getParameter("genero").toUpperCase();
         
+        // Recebe e valida codDiretor
+        teste = request.getParameter("diretor");
+        int codDiretor = Integer.parseInt(teste);
+        if (codDiretor == 0){
+            msgErro = "É necessário informar o diretor do filme";
+            }
+        
         if (msgErro.equalsIgnoreCase("")) {
             // Cria um objeto pessoa para passar para gravar no banco
             Filme movie = new Filme();
@@ -166,7 +181,7 @@ public class FilmesServlet extends HttpServlet {
             movie.setNomeFilme(nome);
             movie.setDescricao(descricao);
             movie.setGenero(genero);
-
+            movie.setCodDiretor(codDiretor);
 
             try {
                 if (codFilme <= 0) {
@@ -229,6 +244,19 @@ public class FilmesServlet extends HttpServlet {
         }
     }
 
+    public List<Diretor> carregaListaDiretores (){
+        List<Diretor> listaDir = new ArrayList<Diretor>();
+        
+        try {
+            listaDir = DiretorDB.getDiretores();
+        } catch (SQLException e) {
+            System.out.println("ERRO: Ao trazer a lista de filmes do Banco de Dados!");
+        }
+        
+        return listaDir;
+        
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
